@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background: darkblue;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Appointment Booking</h2>
+        <form action="submitAppointment" method="post">
+            <label for="patient_name">Patient Name:</label>
+            <input type="text" id="patient_name" name="patient_name" required>
+
+            <label for="patient_email">Patient Email:</label>
+            <input type="email" id="patient_email" name="patient_email" required>
+
+            <label for="doctor_name">Doctor Name:</label>
+            <select id="doctor_name" name="doctor_name" required onchange="checkAvailability()">
+                <option value="">Select a Doctor</option>
+            </select>
+
+            <label for="appointment_date">Appointment Date:</label>
+            <input type="date" id="appointment_date" name="appointment_date" required onchange="checkAvailability()">
+
+            <label for="appointment_time">Appointment Time:</label>
+            <select id="appointment_time" name="appointment_time" required>
+                <option value="">Select a time</option>
+            </select>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+    <script>
+        // Predefined list of doctors
+        const doctors = [
+            "Dr. Eshwar Madas, General Practitioner",
+            "Dr. Geeta Krishna Tadimalla, Female General Practitioner",
+            "Dr. Sheela Kachwaha, Female General Practitioner",
+            "Dr. Bhadresh Patel, Male General Practitioner",
+            "Dr. Paul Singh, Male General Practitioner",
+            "Dr. Alagendran Kanapathippillai, Male General Practitioner"
+        ];
+
+        function populateDoctors() {
+            const doctorDropdown = document.getElementById("doctor_name");
+            doctors.forEach(doctor => {
+                let option = document.createElement("option");
+                option.value = doctor;
+                option.textContent = doctor;
+                doctorDropdown.appendChild(option);
+            });
+        }
+
+        function generateTimeSlots() {
+            const timeDropdown = document.getElementById("appointment_time");
+            timeDropdown.innerHTML = "<option value=''>Select a time</option>";
+
+            let startTime = 9 * 60; // 9:00 AM in minutes
+            let endTime = 17 * 60; // 5:00 PM in minutes
+
+            for (let time = startTime; time < endTime; time += 15) {
+                let hours = Math.floor(time / 60);
+                let minutes = time % 60;
+                let formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+
+                let option = document.createElement("option");
+                option.value = formattedTime;
+                option.textContent = formattedTime;
+                timeDropdown.appendChild(option);
+            }
+        }
+
+        function checkAvailability() {
+            const doctor = document.getElementById("doctor_name").value;
+            const date = document.getElementById("appointment_date").value;
+            const timeDropdown = document.getElementById("appointment_time");
+
+            if (!doctor || !date) return;
+
+            fetch(`/checkAvailability?doctor=${doctor}&date=${date}`)
+                .then(response => response.json())
+                .then(data => {
+                    generateTimeSlots(); // Load all time slots first
+                    let options = timeDropdown.options;
+
+                    // Remove booked slots
+                    for (let i = options.length - 1; i >= 0; i--) {
+                        if (data.bookedSlots.includes(options[i].value)) {
+                            options[i].remove();
+                        }
+                    }
+                })
+                .catch(error => console.error('Error fetching availability:', error));
+        }
+
+        // Load doctor names and time slots when the page loads
+        window.onload = function () {
+            populateDoctors();
+            generateTimeSlots();
+        };
+    </script>
+</body>
+</html>

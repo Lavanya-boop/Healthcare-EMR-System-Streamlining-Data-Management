@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Findings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Laboratory Findings</h1>
+        <form action="/submit-lab-report" method="post">
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" placeholder="Enter Patient ID" required>
+
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" placeholder="Enter Patient Name" required>
+
+            <label for="date">Date of Test:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="physician">Referring Physician:</label>
+            <input type="text" id="physician" name="physician" placeholder="Enter Referring Physician">
+
+            <label for="hemoglobin">Hemoglobin (g/dL):</label>
+            <input type="text" id="hemoglobin" name="hemoglobin" placeholder="Enter Hemoglobin Level">
+
+            <label for="rbc">RBC Count (million/µL):</label>
+            <input type="text" id="rbc" name="rbc" placeholder="Enter RBC Count">
+
+            <label for="wbc">WBC Count (cells/µL):</label>
+            <input type="text" id="wbc" name="wbc" placeholder="Enter WBC Count">
+
+            <label for="glucose">Blood Glucose (mg/dL):</label>
+            <input type="text" id="glucose" name="glucose" placeholder="Enter Blood Glucose Level">
+
+            <label for="cholesterol">Cholesterol (mg/dL):</label>
+            <input type="text" id="cholesterol" name="cholesterol" placeholder="Enter Cholesterol Level">
+
+            <label for="microbiologyFindings">Microbiology Findings:</label>
+            <textarea id="microbiologyFindings" name="microbiologyFindings" rows="3" placeholder="Enter microbiology findings"></textarea>
+
+            <label for="xray">X-ray Findings:</label>
+            <textarea id="xray" name="xray" rows="3" placeholder="Enter X-ray results"></textarea>
+
+            <label for="ctScan">CT Scan Findings:</label>
+            <textarea id="ctScan" name="ctScan" rows="3" placeholder="Enter CT scan results"></textarea>
+
+            <label for="mri">MRI Findings:</label>
+            <textarea id="mri" name="mri" rows="3" placeholder="Enter MRI results"></textarea>
+
+            <label for="ultrasound">Ultrasound Findings:</label>
+            <textarea id="ultrasound" name="ultrasound" rows="3" placeholder="Enter ultrasound results"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit Report</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

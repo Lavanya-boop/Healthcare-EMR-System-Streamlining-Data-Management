@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini EHR System</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #eeeeee;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+      width: 90%;
+      max-width: 800px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      color: #03dac6;
+    }
+    h2 {
+      color: #bb86fc;
+      font-size: 22px;
+    }
+    .flow-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .flow-row {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 10px 0;
+    }
+    .flow-item {
+      background: #2c2c2c;
+      padding: 15px;
+      border-radius: 8px;
+      width: 45%;
+      text-align: center;
+      transition: all 0.3s;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .flow-item:hover {
+      background: #3c3c3c;
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    .flow-item.primary {
+      background: #03dac6;
+      color: #121212;
+      font-weight: bold;
+    }
+    .flow-item.secondary {
+      background: #3700b3;
+      color: #ffffff;
+    }
+    .arrow {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      color: #bb86fc;
+      font-size: 24px;
+    }
+    .arrow-down {
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .arrow-right {
+      right: -25px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .search-section {
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    input {
+      padding: 12px;
+      width: 60%;
+      border-radius: 8px;
+      border: none;
+      background: #3c3c3c;
+      color: #ffffff;
+      margin-right: 10px;
+    }
+    .search-btn {
+      background: #bb86fc;
+      border: none;
+      padding: 12px 20px;
+      color: #121212;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .search-btn:hover {
+      background: #a370f7;
+    }
+    .side-nav {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #2c2c2c;
+      border-radius: 8px;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-icon {
+      color: #03dac6;
+      font-size: 24px;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .nav-icon:hover {
+      color: #00bfa5;
+    }
+    @media (max-width: 768px) {
+      .flow-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .flow-item {
+        width: 80%;
+        margin: 10px 0;
+      }
+      .arrow-right {
+        right: auto;
+        bottom: -25px;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Mini Electronic Health Record System</h1>
+  
+  <!-- Main Flow Process -->
+  <div class="flow-container">
+    <!-- First Row -->
+    <div class="flow-row">
+      <div class="flow-item primary">
+        Patient Registration
+        <div class="arrow arrow-down">↓</div>
+      </div>
+      <div class="flow-item primary">
+        Appointment Booking
+        <div class="arrow arrow-down">↓</div>
+      </div>
+    </div>
+    
+    <!-- Second Row -->
+    <div class="flow-row">
+      <div class="flow-item secondary">
+        Past Medical History
+        <div class="arrow arrow-right">→</div>
+      </div>
+      <div class="flow-item secondary">
+        Laboratory Findings
+        <div class="arrow arrow-down">↓</div>
+      </div>
+    </div>
+    
+    <!-- Third Row -->
+    <div class="flow-row">
+      <div class="flow-item" style="margin-left: 50%;">
+        Diagnosis
+        <div class="arrow arrow-down">↓</div>
+      </div>
+    </div>
+    
+    <!-- Fourth Row -->
+    <div class="flow-row">
+      <div class="flow-item" style="margin-left: 50%;">
+        Treatment
+      </div>
+    </div>
+  </div>
+  
+  <!-- Search Section -->
+  <div class="search-section">
+    <h2>Search Patient Records</h2>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <input type="text" placeholder="Enter Patient ID">
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- Side Navigation -->
+<div class="side-nav">
+  <div class="nav-icon">⚙️</div>
+  <div class="nav-icon">📊</div>
+  <div class="nav-icon">🔔</div>
+  <div class="nav-icon">📁</div>
+  <div class="nav-icon">👤</div>
+</div>
+
+</body>
+</html>

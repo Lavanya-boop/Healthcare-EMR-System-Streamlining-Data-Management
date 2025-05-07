@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Medical History Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Past Medical History Form</h1>
+        <form action="/submit-medical-history" method="post">
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" placeholder="Enter Patient ID" required>
+
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" placeholder="Enter Patient Name" required>
+
+            <label for="chronicIllnesses">Chronic Illnesses:</label>
+            <textarea id="chronicIllnesses" name="chronicIllnesses" rows="3" placeholder="Enter chronic illnesses" required></textarea>
+
+            <label for="surgeries">Previous Surgeries:</label>
+            <textarea id="surgeries" name="surgeries" rows="3" placeholder="Enter details of past surgeries"></textarea>
+
+            <label for="currentMedications">Current Medications:</label>
+            <textarea id="currentMedications" name="currentMedications" rows="3" placeholder="List all current medications"></textarea>
+
+            <label for="allergies">Allergies:</label>
+            <textarea id="allergies" name="allergies" rows="3" placeholder="List any known allergies"></textarea>
+
+            <label for="hospitalizations">Hospitalizations:</label>
+            <textarea id="hospitalizations" name="hospitalizations" rows="3" placeholder="Details of past hospitalizations"></textarea>
+
+            <label for="familyHistory">Family Medical History:</label>
+            <textarea id="familyHistory" name="familyHistory" rows="3" placeholder="Include family history of diseases"></textarea>
+
+            <label for="immunizations">Immunizations:</label>
+            <textarea id="immunizations" name="immunizations" rows="3" placeholder="List immunizations received"></textarea>
+
+            <label for="socialHistory">Social History:</label>
+            <textarea id="socialHistory" name="socialHistory" rows="3" placeholder="Include lifestyle habits"></textarea>
+
+            <label for="otherConditions">Other Medical Conditions:</label>
+            <textarea id="otherConditions" name="otherConditions" rows="3" placeholder="Mention any other medical conditions"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+

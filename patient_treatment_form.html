@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Treatment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Treatment Form</h1>
+        <form action="/submit-treatment" method="post">
+            <label for="patientId">Patient ID:</label>
+            <input type="text" id="patientId" name="patientId" placeholder="Enter Patient ID" required>
+
+            <label for="patientName">Patient Name:</label>
+            <input type="text" id="patientName" name="patientName" placeholder="Enter Patient Name" required>
+
+            <label for="date">Date of Treatment:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="diagnosis">Diagnosis:</label>
+            <textarea id="diagnosis" name="diagnosis" rows="3" placeholder="Enter the patient's diagnosis" required></textarea>
+
+            <label for="medications">Prescribed Medications:</label>
+            <textarea id="medications" name="medications" rows="3" placeholder="List all prescribed medications" required></textarea>
+
+            <label for="procedures">Performed Procedures:</label>
+            <textarea id="procedures" name="procedures" rows="3" placeholder="Describe any procedures performed"></textarea>
+
+            <label for="therapyPlan">Therapy Plan:</label>
+            <textarea id="therapyPlan" name="therapyPlan" rows="3" placeholder="Enter any therapy prescribed"></textarea>
+
+            <label for="diet">Diet Recommendations:</label>
+            <textarea id="diet" name="diet" rows="3" placeholder="Enter dietary instructions"></textarea>
+
+            <label for="lifestyle">Lifestyle Recommendations:</label>
+            <textarea id="lifestyle" name="lifestyle" rows="3" placeholder="Enter lifestyle recommendations"></textarea>
+
+            <label for="followUp">Follow-Up Schedule:</label>
+            <textarea id="followUp" name="followUp" rows="3" placeholder="Enter follow-up details"></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit Treatment</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
