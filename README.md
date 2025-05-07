@@ -1,4 +1,3 @@
-I'll create a README.md for your healthcare EMR system project using the same format as the lung cancer risk factor analysis project:
 
 # Healthcare EMR System: Streamlining Data Management
 
